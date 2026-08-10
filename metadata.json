@@ -1,0 +1,6 @@
+{
+  "name": "Umbrella Learning",
+  "description": "Encouraging, parent-guided AI learning assistant featuring an engaging Student Mode and secure Parent Dashboard.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
