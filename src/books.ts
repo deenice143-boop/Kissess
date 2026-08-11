@@ -1,4 +1,10 @@
 // SquareCircle MultiServices — Series Catalog
+
+// Cover art (imported so Vite bundles them into the build; works public or private)
+import bodyTeamCover from "../assets/.aistudio/body-team.jpg";
+import elementaryCover from "../assets/.aistudio/elementary-101.jpg";
+import progressionCover from "../assets/.aistudio/progression.jpg";
+import quadSquadCover from "../assets/.aistudio/quad-squad.jpg";
 // Each "book" carries its own set of topics. Selecting a book in the Library
 // screen feeds its topics into the existing lesson generator (title string only,
 // same shape as the original RECOMMEND_TOPICS). Real cover art is added later by
@@ -41,6 +47,7 @@ export const BOOKS: Book[] = [
     color: "#1E6FD9",
     bg: "#E8F1FC",
     coverEmoji: "🫀",
+    cover: bodyTeamCover,
     sensitive: true, // includes the reproductive system
     topics: [
       { id: "circulatory", titleEn: "The Circulatory System", titleEs: "El Sistema Circulatorio", titleFr: "Le Système Circulatoire", icon: "❤️" },
@@ -69,6 +76,7 @@ export const BOOKS: Book[] = [
     color: "#F2A900",
     bg: "#FFF6E0",
     coverEmoji: "🌈",
+    cover: elementaryCover,
     topics: [
       { id: "sight", titleEn: "Sight — My Eyes", titleEs: "La Vista — Mis Ojos", titleFr: "La Vue — Mes Yeux", icon: "👁️" },
       { id: "hearing", titleEn: "Hearing — My Ears", titleEs: "El Oído — Mis Oídos", titleFr: "L'Ouïe — Mes Oreilles", icon: "👂" },
@@ -94,6 +102,7 @@ export const BOOKS: Book[] = [
     color: "#E8541E",
     bg: "#FDECE4",
     coverEmoji: "⚡",
+    cover: quadSquadCover,
     topics: [
       { id: "earth-el", titleEn: "Earth — The Ground We Stand On", titleEs: "Tierra — El Suelo que Pisamos", titleFr: "Terre — Le Sol sur Lequel Nous Marchons", icon: "🌱" },
       { id: "water-el", titleEn: "Water — The Flow of Life", titleEs: "Agua — El Fluir de la Vida", titleFr: "Eau — Le Flux de la Vie", icon: "🌊" },
@@ -114,6 +123,7 @@ export const BOOKS: Book[] = [
     color: "#2F6B2F",
     bg: "#EAF3EA",
     coverEmoji: "🌟",
+    cover: progressionCover,
     sensitive: true, // conception & prenatal stages — keep age-appropriate; client review
     topics: [
       { id: "beginning", titleEn: "The Beginning", titleEs: "El Comienzo", titleFr: "Le Commencement", icon: "✨" },

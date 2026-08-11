@@ -426,6 +426,7 @@ export default function App() {
   
   // Current Active Lesson & Quiz State
   const [currentLesson, setCurrentLesson] = useState<LessonData | null>(null);
+  const [showStoryIntro, setShowStoryIntro] = useState<boolean>(false);
   const [quizAttemptAnswers, setQuizAttemptAnswers] = useState<number[]>([]); // stores index of selected answers
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<number>(-1); // -1 means they are reading the lesson, >= 0 is active quiz
   const [hasCompletedQuiz, setHasCompletedQuiz] = useState<boolean>(false);
@@ -795,6 +796,7 @@ export default function App() {
     setIsGeneratingLesson(true);
     setErrorMessage(null);
     setCurrentLesson(null);
+    setShowStoryIntro(false);
     setQuizAttemptAnswers([]);
     setActiveQuestionIndex(-1);
     setHasCompletedQuiz(false);
@@ -817,6 +819,7 @@ export default function App() {
 
       const lessonData: LessonData = await res.json();
       setCurrentLesson(lessonData);
+      setShowStoryIntro(Boolean(selectedBookId));
     } catch (err: any) {
       console.error(err);
       setErrorMessage(err?.message || "An error occurred while calling the educational brain. Please try again.");
@@ -2166,7 +2169,17 @@ export default function App() {
                           background: isActive ? book.bg : "#f8fafc",
                         }}
                       >
-                        <span className="text-3xl">{book.coverEmoji}</span>
+                        {book.cover ? (
+                          <div className="w-full aspect-square rounded-xl overflow-hidden">
+                            <img
+                              src={book.cover}
+                              alt={bookTitle}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                        ) : (
+                          <span className="text-3xl">{book.coverEmoji}</span>
+                        )}
                         <span
                           className="text-xs font-bold leading-tight"
                           style={{ color: isActive ? book.color : "#0f172a" }}
@@ -2321,7 +2334,38 @@ export default function App() {
               )}
 
               {/* ACTIVE LESSON VIEW CONTAINER */}
-              {currentLesson && !isGeneratingLesson && (
+              {/* Story Intro — full book cover before the story begins */}
+              {currentLesson && !isGeneratingLesson && showStoryIntro && activeBook && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-xs p-6 flex flex-col items-center text-center space-y-5"
+                >
+                  <span className="text-xs uppercase font-extrabold tracking-wider text-purple-600">
+                    {currentLesson.gradeLevel} • {currentLesson.topic}
+                  </span>
+                  {activeBook.cover && (
+                    <img
+                      src={activeBook.cover}
+                      alt={lang === "es" ? activeBook.titleEs : lang === "fr" ? activeBook.titleFr : activeBook.titleEn}
+                      className="w-full max-w-xs rounded-2xl shadow-md"
+                    />
+                  )}
+                  <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+                    {currentLesson.title}
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={() => setShowStoryIntro(false)}
+                    className="px-8 py-3 rounded-full font-bold text-white text-base shadow-md transition-transform active:scale-95"
+                    style={{ backgroundColor: activeBook.color }}
+                  >
+                    {lang === "es" ? "Empezar la historia ▶" : lang === "fr" ? "Commencer l'histoire ▶" : "Start the story ▶"}
+                  </button>
+                </motion.div>
+              )}
+
+              {currentLesson && !isGeneratingLesson && !showStoryIntro && (
                 <div className="space-y-6">
                   
                   {/* Interactive Quiz Mode Not Started yet: Show Story Reading Section first */}
