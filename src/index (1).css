@@ -1,0 +1,193 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Palette B — Coloring-Book Pop. Vivid blue primary + bold green/red accents. */
+  --color-indigo-50:  #eaf3ff;
+  --color-indigo-100: #d3e6ff;
+  --color-indigo-200: #a9ccff;
+  --color-indigo-300: #74a9ff;
+  --color-indigo-400: #3d82ff;
+  --color-indigo-500: #1a6ae6;
+  --color-indigo-600: #1257c9;
+  --color-indigo-700: #1247a0;
+  --color-indigo-800: #143f83;
+  --color-indigo-900: #15366b;
+  --color-indigo-950: #0d2145;
+
+  /* Bold grass green (recolors emerald-* accents) */
+  --color-emerald-50:  #eafaef;
+  --color-emerald-100: #cff4db;
+  --color-emerald-200: #a1e8bb;
+  --color-emerald-300: #66d693;
+  --color-emerald-400: #33bd6d;
+  --color-emerald-500: #1fa64a;
+  --color-emerald-600: #158a3d;
+  --color-emerald-700: #146e33;
+  --color-emerald-800: #14572b;
+  --color-emerald-900: #114824;
+  --color-emerald-950: #05280f;
+
+  /* Bold coloring-book red (recolors rose-* accents) */
+  --color-rose-50:  #fdece9;
+  --color-rose-100: #fbd8d2;
+  --color-rose-200: #f7b3a8;
+  --color-rose-300: #f28776;
+  --color-rose-400: #ec5b45;
+  --color-rose-500: #e23a26;
+  --color-rose-600: #c62f1f;
+  --color-rose-700: #a4271a;
+  --color-rose-800: #86241a;
+  --color-rose-900: #70231b;
+  --color-rose-950: #3d0f0a;
+}
+
+body {
+  background-color: #e6f2ff;
+  font-family: var(--font-sans);
+  transition: background-color 0.3s ease;
+}
+
+/* ----------------- SEAMLESS COHESIVE CHARCOAL DARK THEME OVERRIDES ----------------- */
+.theme-charcoal {
+  background-color: #0b0f19 !important; /* Extremely high-end obsidian blue-slate */
+  color: #f8fafc !important;
+}
+
+.theme-charcoal body {
+  background-color: #0b0f19 !important;
+}
+
+/* Elegant Slate Cards & Panels Redefinitions */
+.theme-charcoal .bg-white {
+  background-color: #111827 !important; /* Beautiful deep gray-slate bg-slate-900 */
+  color: #f3f4f6 !important;
+  border-color: #1f2937 !important; /* border-slate-800 */
+}
+
+.theme-charcoal .bg-slate-50 {
+  background-color: #1f2937 !important; /* bg-slate-800 */
+  color: #f3f4f6 !important;
+  border-color: #374151 !important; /* border-slate-705 */
+}
+
+.theme-charcoal .bg-slate-100 {
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+  border-color: #1f2937 !important;
+}
+
+/* Text Enhancements for readability & peak contrast specs */
+.theme-charcoal .text-slate-900,
+.theme-charcoal .text-slate-850,
+.theme-charcoal .text-slate-800 {
+  color: #f9fafb !important;
+}
+
+.theme-charcoal .text-slate-700,
+.theme-charcoal .text-slate-600 {
+  color: #e5e7eb !important;
+}
+
+.theme-charcoal .text-slate-500,
+.theme-charcoal .text-slate-400 {
+  color: #9ca3af !important;
+}
+
+/* Borders */
+.theme-charcoal .border-slate-100 {
+  border-color: #1f2937 !important;
+}
+
+.theme-charcoal .border-slate-200 {
+  border-color: #374151 !important;
+}
+
+.theme-charcoal .border-slate-300 {
+  border-color: #4b5563 !important;
+}
+
+/* Form inputs & interactive widgets */
+.theme-charcoal input, 
+.theme-charcoal select, 
+.theme-charcoal textarea {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+/* Soft Accent Overlays */
+.theme-charcoal .bg-indigo-50 {
+  background-color: #1e1b4b !important; /* Deep deep indigo purple */
+  color: #e0e7ff !important;
+  border-color: #312e81 !important;
+}
+
+.theme-charcoal .text-indigo-600 {
+  color: #a5b4fc !important; /* indigo-300 */
+}
+
+.theme-charcoal .text-indigo-700 {
+  color: #c7d2fe !important;
+}
+
+.theme-charcoal .bg-amber-50 {
+  background-color: #451a03 !important; /* rich dark copper gold */
+  color: #fef3c7 !important;
+  border-color: #78350f !important;
+}
+
+.theme-charcoal .text-amber-700,
+.theme-charcoal .text-amber-800 {
+  color: #fde047 !important;
+}
+
+.theme-charcoal .bg-purple-50 {
+  background-color: #3b0764 !important; /* deep purple velvet */
+  color: #f3e8ff !important;
+  border-color: #581c87 !important;
+}
+
+.theme-charcoal .text-purple-700 {
+  color: #e9d5ff !important;
+}
+
+/* Buttons and States hover color refinement */
+.theme-charcoal .hover\:bg-slate-50:hover {
+  background-color: #1f2937 !important;
+}
+
+.theme-charcoal .hover\:bg-slate-100:hover {
+  background-color: #111827 !important;
+}
+
+.theme-charcoal .hover\:bg-slate-200:hover {
+  background-color: #374151 !important;
+}
+
+.theme-charcoal .bg-slate-50\/55 {
+  background-color: rgba(31, 41, 55, 0.55) !important;
+}
+
+.theme-charcoal .bg-indigo-50\/20 {
+  background-color: rgba(30, 27, 75, 0.4) !important;
+}
+
+.theme-charcoal .border-indigo-600 {
+  border-color: #6366f1 !important;
+}
+
+/* Quick custom scrollbars */
+.theme-charcoal *::-webkit-scrollbar {
+  width: 6px;
+}
+.theme-charcoal *::-webkit-scrollbar-track {
+  background: #0b0f19;
+}
+.theme-charcoal *::-webkit-scrollbar-thumb {
+  background-color: #374151;
+  border-radius: 99px;
+}
