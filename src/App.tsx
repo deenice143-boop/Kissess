@@ -1193,7 +1193,7 @@ export default function App() {
               >
                 <div className="inline-flex items-center gap-2 bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-100 text-indigo-700 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider">
                   <Sparkles className="w-3.5 h-3.5 text-indigo-500 animate-spin" />
-                  <span>☔ Umbrella Learning Co-Discovery™ Project</span>
+                  <span>✨ KISSS Co-Discovery™ Project</span>
                 </div>
                 
                 <h2 className="text-4xl sm:text-5xl lg:text-5xl xl:text-6xl font-black font-sans tracking-tight text-slate-900 leading-tight">
@@ -2145,7 +2145,7 @@ export default function App() {
               <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-xs space-y-4">
                 <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
                   <BookOpen className="w-4 h-4 text-indigo-500" />
-                  Choose your book
+                  {t.chooseYourBook}
                 </h3>
                 <div className="grid grid-cols-2 gap-3">
                   {BOOKS.map((book) => {
@@ -2170,11 +2170,11 @@ export default function App() {
                         }}
                       >
                         {book.cover ? (
-                          <div className="w-full aspect-square rounded-xl overflow-hidden">
+                          <div className="w-full aspect-[3/4] rounded-xl overflow-hidden bg-white flex items-center justify-center">
                             <img
                               src={book.cover}
                               alt={bookTitle}
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain"
                             />
                           </div>
                         ) : (
@@ -2379,9 +2379,9 @@ export default function App() {
                       <div className="bg-gradient-to-tr from-indigo-50 via-purple-50 to-indigo-50 p-6 border-b border-indigo-100/40 relative">
                         <div className="absolute top-4 right-4 flex items-center gap-1.5 bg-white/80 backdrop-blur-xs px-2.5 py-1 rounded-full text-xs font-bold text-indigo-700">
                           <BookOpen className="w-3.5 h-3.5 text-indigo-600" />
-                          <span>Interactive Story Lesson</span>
+                          <span>{t.interactiveStoryLesson}</span>
                         </div>
-                        <span className="text-xs uppercase font-extrabold tracking-wider text-purple-600 block mb-1">
+                        <span className="text-xs uppercase font-extrabold tracking-wider text-indigo-700 block mb-1">
                           {currentLesson.gradeLevel} • {currentLesson.topic}
                         </span>
                         <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-sans tracking-tight">

@@ -4,6 +4,19 @@
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* Brighter, playful primary — coloring-book blue (recolors all indigo-* utilities) */
+  --color-indigo-50:  #eef5ff;
+  --color-indigo-100: #d9e8ff;
+  --color-indigo-200: #bcd7ff;
+  --color-indigo-300: #8dbcff;
+  --color-indigo-400: #5a9bff;
+  --color-indigo-500: #2f7cf6;
+  --color-indigo-600: #1e6fd9;
+  --color-indigo-700: #1a5cb8;
+  --color-indigo-800: #1b4d96;
+  --color-indigo-900: #1b4176;
+  --color-indigo-950: #122748;
 }
 
 body {
