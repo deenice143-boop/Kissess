@@ -455,6 +455,76 @@ export default function App() {
       setTranslatingWord(false);
     }
   };
+
+  const downloadStoryPdf = async () => {
+    if (!currentLesson) return;
+    const { jsPDF } = await import("jspdf");
+    const doc = new jsPDF({ unit: "pt", format: "letter" });
+    const pageW = doc.internal.pageSize.getWidth();
+    const pageH = doc.internal.pageSize.getHeight();
+    const margin = 56;
+    const maxW = pageW - margin * 2;
+    const lineH = 18;
+    let y = margin;
+    const ensure = (needed: number) => { if (y + needed > pageH - margin) { doc.addPage(); y = margin; } };
+
+    // Brand header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(12);
+    doc.setTextColor(30, 111, 217);
+    doc.text("KISSS — Know Yourself First", margin, y);
+    y += 26;
+
+    // Title
+    doc.setFontSize(22);
+    doc.setTextColor(15, 23, 42);
+    const titleLines = doc.splitTextToSize(currentLesson.title, maxW);
+    doc.text(titleLines, margin, y);
+    y += titleLines.length * 26 + 4;
+
+    // Grade • topic
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(11);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`${currentLesson.gradeLevel}  \u2022  ${currentLesson.topic}`, margin, y);
+    y += 22;
+    doc.setDrawColor(226, 232, 240);
+    doc.line(margin, y, pageW - margin, y);
+    y += 22;
+
+    // Story body
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    doc.setTextColor(30, 41, 59);
+    for (const line of doc.splitTextToSize(currentLesson.storySession, maxW)) {
+      ensure(lineH);
+      doc.text(line, margin, y);
+      y += lineH;
+    }
+
+    // Key takeaways
+    if (currentLesson.keyConcepts && currentLesson.keyConcepts.length) {
+      y += 12; ensure(40);
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      doc.setTextColor(30, 111, 217);
+      doc.text("Key Takeaways", margin, y);
+      y += 20;
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(12);
+      doc.setTextColor(30, 41, 59);
+      for (const c of currentLesson.keyConcepts) {
+        for (const line of doc.splitTextToSize("\u2022  " + c, maxW)) {
+          ensure(lineH);
+          doc.text(line, margin, y);
+          y += lineH;
+        }
+      }
+    }
+
+    const safe = (currentLesson.title || "kisss-story").replace(/[^a-z0-9]+/gi, "-").toLowerCase().slice(0, 40);
+    doc.save(`${safe}.pdf`);
+  };
   const [quizAttemptAnswers, setQuizAttemptAnswers] = useState<number[]>([]); // stores index of selected answers
   const [activeQuestionIndex, setActiveQuestionIndex] = useState<number>(-1); // -1 means they are reading the lesson, >= 0 is active quiz
   const [hasCompletedQuiz, setHasCompletedQuiz] = useState<boolean>(false);
@@ -3049,6 +3119,18 @@ export default function App() {
                               {currentLesson.storySession}
                             </p>
                           )}
+                        </div>
+
+                        {/* Download story as PDF */}
+                        <div className="pt-4">
+                          <button
+                            type="button"
+                            onClick={downloadStoryPdf}
+                            className="flex items-center justify-center gap-2 w-full sm:w-auto px-5 py-2.5 rounded-full font-bold text-sm text-white shadow-md active:scale-95 transition-transform"
+                            style={{ backgroundColor: activeBook?.color || "#1e6fd9" }}
+                          >
+                            📄 {t.downloadStory}
+                          </button>
                         </div>
 
                         {/* Magical Takeaway bullet cards */}
