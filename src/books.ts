@@ -81,7 +81,6 @@ export const BOOKS: Book[] = [
     cover: elementaryCover,
     downloadUrl: "/downloads/Elementary-101.pdf",
     coloringPages: [
-      "/coloring/elementary-101-page-01.png",
       "/coloring/elementary-101-page-02.png",
       "/coloring/elementary-101-page-03.png",
       "/coloring/elementary-101-page-04.png",
