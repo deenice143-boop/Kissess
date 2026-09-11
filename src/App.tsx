@@ -40,6 +40,7 @@ import {
 import { Language, LessonData, QuizQuestion, ScorePlayRecord, ParentInsights } from "./types";
 import { translations } from "./utils/localization";
 import { BOOKS, getBookById } from "./books";
+import ColoringCanvas from "./ColoringCanvas";
 
 // Avatars Definition
 const PRESET_AVATARS = [
@@ -419,6 +420,7 @@ export default function App() {
   const [selectedPresetTopic, setSelectedPresetTopic] = useState<string>("");
   const [customTopic, setCustomTopic] = useState<string>("");
   const [selectedBookId, setSelectedBookId] = useState<string>("");
+  const [coloringOpen, setColoringOpen] = useState<boolean>(false);
   const activeBook = getBookById(selectedBookId);
   const activeTopics = activeBook ? activeBook.topics : [];
   const [isGeneratingLesson, setIsGeneratingLesson] = useState<boolean>(false);
@@ -800,7 +802,7 @@ export default function App() {
       }
     }
 
-    const savedTheme = localStorage.getItem("umbrella_themeMode");
+    const savedTheme = localStorage.getItem("kisss_themeMode");
     if (savedTheme) setThemeMode(savedTheme as any);
 
     const savedDevice = localStorage.getItem("umbrella_deviceMode");
@@ -1053,7 +1055,7 @@ export default function App() {
               onClick={() => {
                 const nextTheme = themeMode === "charcoal" ? "light" : "charcoal";
                 setThemeMode(nextTheme);
-                localStorage.setItem("umbrella_themeMode", nextTheme);
+                localStorage.setItem("kisss_themeMode", nextTheme);
               }}
               className={`flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold rounded-full border transition-all ${
                 themeMode === "charcoal" ? "bg-slate-800 border-slate-700 text-slate-100 hover:bg-slate-700" : "bg-white border-slate-200 text-slate-700 hover:bg-slate-50"
@@ -2324,6 +2326,16 @@ export default function App() {
                   >
                     📥 {t.downloadBook}
                   </a>
+                )}
+                {activeBook?.coloringPages && activeBook.coloringPages.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => setColoringOpen(true)}
+                    className="mt-2 flex items-center justify-center gap-2 w-full px-4 py-3 rounded-2xl font-bold text-sm shadow-sm border-2 transition-transform active:scale-95 bg-white"
+                    style={{ color: activeBook.color, borderColor: activeBook.color }}
+                  >
+                    🎨 {t.colorAndCreate}
+                  </button>
                 )}
               </div>
 
@@ -4457,6 +4469,14 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      <ColoringCanvas
+        open={coloringOpen}
+        onClose={() => setColoringOpen(false)}
+        pages={activeBook?.coloringPages || []}
+        lang={lang}
+        accent={activeBook?.color || "#1e6fd9"}
+      />
 
     </div>
   );

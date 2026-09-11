@@ -31,6 +31,7 @@ export interface Book {
   coverEmoji: string; // placeholder until a real cover image URL is set
   cover?: string;     // hosted cover image URL (added later)
   downloadUrl?: string; // hosted PDF for free download (added per book)
+  coloringPages?: string[]; // hosted transparent line-art pages for the coloring canvas
   sensitive?: boolean; // topics needing age-appropriate guardrails + client review
   topics: BookTopic[];
 }
@@ -79,6 +80,21 @@ export const BOOKS: Book[] = [
     coverEmoji: "🌈",
     cover: elementaryCover,
     downloadUrl: "/downloads/Elementary-101.pdf",
+    coloringPages: [
+      "/coloring/elementary-101-page-01.png",
+      "/coloring/elementary-101-page-02.png",
+      "/coloring/elementary-101-page-03.png",
+      "/coloring/elementary-101-page-04.png",
+      "/coloring/elementary-101-page-05.png",
+      "/coloring/elementary-101-page-06.png",
+      "/coloring/elementary-101-page-07.png",
+      "/coloring/elementary-101-page-08.png",
+      "/coloring/elementary-101-page-09.png",
+      "/coloring/elementary-101-page-10.png",
+      "/coloring/elementary-101-page-11.png",
+      "/coloring/elementary-101-page-12.png",
+      "/coloring/elementary-101-page-13.png",
+    ],
     topics: [
       { id: "sight", titleEn: "Sight — My Eyes", titleEs: "La Vista — Mis Ojos", titleFr: "La Vue — Mes Yeux", icon: "👁️" },
       { id: "hearing", titleEn: "Hearing — My Ears", titleEs: "El Oído — Mis Oídos", titleFr: "L'Ouïe — Mes Oreilles", icon: "👂" },
