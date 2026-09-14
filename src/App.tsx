@@ -1034,8 +1034,8 @@ export default function App() {
           
           {/* Main Logo & Title */}
           <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-xl bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-md shadow-indigo-100">
-              <span className="text-2xl" role="img" aria-label="KISSS">🌳</span>
+            <div className="h-10 w-10 rounded-xl bg-white flex items-center justify-center shadow-md shadow-indigo-100 overflow-hidden p-0.5">
+              <img src="/kisss-emblem.png" alt="KISSS" className="w-full h-full object-contain" />
             </div>
             <div>
               <h1 className="text-xl font-bold font-sans tracking-tight text-slate-900">
@@ -1701,7 +1701,7 @@ export default function App() {
               className="max-w-4xl mx-auto rounded-3xl bg-indigo-900 text-white p-6 sm:p-8 relative overflow-hidden shadow-md"
             >
               <div className="absolute right-0 bottom-0 opacity-10 translate-x-1/4 translate-y-1/4 select-none pointer-events-none">
-                <span className="text-9xl">🌳</span>
+                <img src="/kisss-emblem.png" alt="" className="w-40 h-40 object-contain" />
               </div>
               <div className="relative space-y-3 z-10 text-left">
                 <span className="text-amber-300 font-sans text-sm tracking-wider block">★★★★★ Trusted by Parents</span>
@@ -1719,7 +1719,7 @@ export default function App() {
               className="max-w-3xl mx-auto bg-white rounded-3xl p-8 sm:p-10 border border-indigo-100 shadow-sm text-center space-y-4"
             >
               <div className="flex items-center justify-center gap-2">
-                <span className="text-3xl">🌳</span>
+                <img src="/kisss-emblem.png" alt="KISSS" className="w-8 h-8 object-contain" />
                 <span className="text-xs font-black uppercase tracking-widest text-indigo-600">{t.missionBadge}</span>
               </div>
               <h3 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">{t.missionHeading}</h3>
@@ -2305,7 +2305,9 @@ export default function App() {
                             />
                           </div>
                         ) : (
-                          <span className="text-3xl">{book.coverEmoji}</span>
+                          <div className="w-full aspect-[3/4] rounded-xl overflow-hidden bg-white flex items-center justify-center p-3">
+                            <img src="/kisss-logo.png" alt={bookTitle} className="w-full h-full object-contain" />
+                          </div>
                         )}
                         <span
                           className="text-xs font-bold leading-tight"
@@ -4067,7 +4069,7 @@ export default function App() {
               <div className="border-4 border-double border-amber-600 rounded-xl p-8 text-center space-y-6 bg-amber-50/10">
                 {/* Banner Header */}
                 <div className="space-y-2 text-center">
-                  <span className="text-4xl text-amber-500 block">🌳</span>
+                  <img src="/kisss-emblem.png" alt="KISSS" className="w-12 h-12 object-contain mx-auto" />
                   <p className="text-xs font-sans font-black uppercase tracking-widest text-amber-800">
                     Milestone Co-Discovery Academic Achievement
                   </p>
