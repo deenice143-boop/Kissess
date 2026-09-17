@@ -42,6 +42,7 @@ import { translations } from "./utils/localization";
 import { BOOKS, getBookById } from "./books";
 import ColoringCanvas from "./ColoringCanvas";
 import PhoneDemo from "./PhoneDemo";
+import JigsawPuzzle from "./JigsawPuzzle";
 
 // Avatars Definition
 const PRESET_AVATARS = [
@@ -422,6 +423,7 @@ export default function App() {
   const [customTopic, setCustomTopic] = useState<string>("");
   const [selectedBookId, setSelectedBookId] = useState<string>("");
   const [coloringOpen, setColoringOpen] = useState<boolean>(false);
+  const [jigsawOpen, setJigsawOpen] = useState<boolean>(false);
   const activeBook = getBookById(selectedBookId);
   const activeTopics = activeBook ? activeBook.topics : [];
   const [isGeneratingLesson, setIsGeneratingLesson] = useState<boolean>(false);
@@ -2100,6 +2102,16 @@ export default function App() {
                     style={{ color: activeBook.color, borderColor: activeBook.color }}
                   >
                     🎨 {t.colorAndCreate}
+                  </button>
+                )}
+                {activeBook?.cover && (
+                  <button
+                    type="button"
+                    onClick={() => setJigsawOpen(true)}
+                    className="mt-2 flex items-center justify-center gap-2 w-full px-4 py-3 rounded-2xl font-bold text-sm shadow-sm border-2 transition-transform active:scale-95 bg-white"
+                    style={{ color: activeBook.color, borderColor: activeBook.color }}
+                  >
+                    🧩 {t.jigsawPuzzle}
                   </button>
                 )}
               </div>
@@ -4234,6 +4246,13 @@ export default function App() {
           </div>
         )}
       </AnimatePresence>
+
+      <JigsawPuzzle
+        open={jigsawOpen}
+        onClose={() => setJigsawOpen(false)}
+        lang={lang}
+        accent={activeBook?.color || "#8b5cf6"}
+      />
 
       <ColoringCanvas
         open={coloringOpen}
