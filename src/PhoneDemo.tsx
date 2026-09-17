@@ -111,16 +111,16 @@ export default function PhoneDemo({ lang = "en" }: { lang?: string }) {
         className="kd-shell relative rounded-[42px] p-[5px]"
         style={{ background: "linear-gradient(130deg,#1e6fd9,#8b5cf6,#22c55e,#facc15,#ef4444,#1e6fd9)", backgroundSize: "300% 300%", width: 288, maxWidth: "82vw" }}
       >
-        <div className="kd-phone rounded-[38px] bg-[#0f1b2d] overflow-hidden" style={{ height: 560 }}>
+        <div className="kd-phone rounded-[38px] bg-[#0f1b2d] overflow-hidden flex flex-col" style={{ height: 560 }}>
           {/* notch */}
-          <div className="w-24 h-1.5 bg-slate-700 rounded-full mx-auto mt-3 mb-1" />
+          <div className="w-24 h-1.5 bg-slate-700 rounded-full mx-auto mt-3 mb-1 shrink-0" />
           {/* status bar */}
-          <div className="flex items-center justify-between px-5 text-[10px] font-bold text-slate-400 py-1">
+          <div className="flex items-center justify-between px-5 text-[10px] font-bold text-slate-400 py-1 shrink-0">
             <span>9:41</span>
             <span className="flex gap-1"><span>📶</span><span>🔋</span></span>
           </div>
           {/* scene area */}
-          <div className="relative" style={{ height: 500 }}>
+          <div className="relative flex-1 min-h-0">
             <AnimatePresence mode="wait">
               <motion.div
                 key={scene}
@@ -135,7 +135,7 @@ export default function PhoneDemo({ lang = "en" }: { lang?: string }) {
             </AnimatePresence>
           </div>
           {/* scene dots */}
-          <div className="flex justify-center gap-1.5 pb-3">
+          <div className="flex justify-center gap-1.5 pb-3 shrink-0">
             {[0, 1, 2].map((i) => (
               <span key={i} className="w-1.5 h-1.5 rounded-full transition-colors" style={{ backgroundColor: scene === i ? "#facc15" : "#33465f" }} />
             ))}
