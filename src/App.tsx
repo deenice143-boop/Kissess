@@ -808,8 +808,9 @@ export default function App() {
     const savedTheme = localStorage.getItem("kisss_themeMode");
     if (savedTheme) setThemeMode(savedTheme as any);
 
-    const savedDevice = localStorage.getItem("umbrella_deviceMode");
-    if (savedDevice) setIsCellphoneBorderMode(savedDevice === "true");
+    // Phone View wrapper is a dev-testing aid only: always start OFF and clear any stale saved value
+    setIsCellphoneBorderMode(false);
+    try { localStorage.removeItem("umbrella_deviceMode"); } catch (e) {}
   }, []);
 
   // Save state helpers
