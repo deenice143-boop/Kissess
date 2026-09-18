@@ -109,9 +109,9 @@ export default function PhoneDemo({ lang = "en" }: { lang?: string }) {
       `}</style>
       <div
         className="kd-shell relative rounded-[42px] p-[5px]"
-        style={{ background: "linear-gradient(130deg,#1e6fd9,#8b5cf6,#22c55e,#facc15,#ef4444,#1e6fd9)", backgroundSize: "300% 300%", width: 288, maxWidth: "82vw" }}
+        style={{ background: "linear-gradient(130deg,#1e6fd9,#8b5cf6,#22c55e,#facc15,#ef4444,#1e6fd9)", backgroundSize: "300% 300%", width: "100%", maxWidth: 260 }}
       >
-        <div className="kd-phone rounded-[38px] bg-[#0f1b2d] overflow-hidden flex flex-col" style={{ height: 560 }}>
+        <div className="kd-phone rounded-[38px] bg-[#0f1b2d] overflow-hidden flex flex-col w-full" style={{ aspectRatio: "9 / 18" }}>
           {/* notch */}
           <div className="w-24 h-1.5 bg-slate-700 rounded-full mx-auto mt-3 mb-1 shrink-0" />
           {/* status bar */}
