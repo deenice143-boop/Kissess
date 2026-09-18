@@ -108,10 +108,10 @@ export default function PhoneDemo({ lang = "en" }: { lang?: string }) {
         .kd-phone { animation: kdFloat 5s ease-in-out infinite; }
       `}</style>
       <div
-        className="kd-shell relative rounded-[42px] p-[5px]"
-        style={{ background: "linear-gradient(130deg,#1e6fd9,#8b5cf6,#22c55e,#facc15,#ef4444,#1e6fd9)", backgroundSize: "300% 300%", width: "100%", maxWidth: 260 }}
+        className="kd-shell relative rounded-[44px] p-[6px]"
+        style={{ background: "linear-gradient(130deg,#1e6fd9,#8b5cf6,#22c55e,#facc15,#ef4444,#1e6fd9)", backgroundSize: "300% 300%", width: 320, height: 645, maxWidth: "100%" }}
       >
-        <div className="kd-phone rounded-[38px] bg-[#0f1b2d] overflow-hidden flex flex-col w-full" style={{ aspectRatio: "9 / 18" }}>
+        <div className="kd-phone rounded-[38px] bg-[#0f1b2d] overflow-hidden flex flex-col w-full h-full">
           {/* notch */}
           <div className="w-24 h-1.5 bg-slate-700 rounded-full mx-auto mt-3 mb-1 shrink-0" />
           {/* status bar */}
